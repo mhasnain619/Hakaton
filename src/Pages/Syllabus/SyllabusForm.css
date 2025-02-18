@@ -1,0 +1,19 @@
+.formBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* border: 1px solid #E1E1E2; */
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    height: 65px;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .addSyllabusName {
+        font-size: 25px !important;
+    }
+}

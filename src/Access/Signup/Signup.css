@@ -1,0 +1,62 @@
+/* LoginPage.css */
+* {
+    padding: 0%;
+    margin: 0%;
+}
+
+.container {
+    max-width: 900px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.leftPanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.rightPanel {
+    display: flex;
+    flex-direction: column !important;
+    gap: 15px;
+    justify-content: center;
+    height: 100vh;
+    padding: 40px;
+    background-color: #FDFDFD;
+}
+
+.inputsBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.welComeTo {
+    padding: 0px 50px;
+}
+
+.loginButton {
+    margin-top: 15px !important;
+}
+
+
+.clickable {
+    cursor: pointer;
+}
+
+.orText {
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .welComeTo {
+        padding: 0px !important;
+    }
+}

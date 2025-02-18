@@ -1,0 +1,81 @@
+.user-card {
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    /* height: 450px; */
+    margin: auto;
+    background-color: #f5f5f5 !important;
+    /* background-color: #fff; */
+}
+
+.user-avatar {
+    width: 160px !important;
+    height: 160px !important;
+}
+
+.userName {
+    font-size: 30px !important;
+    font-weight: 800 !important;
+}
+
+.userNameSngCompany {
+    font-size: 18px !important;
+    color: #626B70;
+}
+
+.Address {
+    display: flex;
+    gap: 5px;
+}
+
+.locationIcon {
+    font-size: large;
+    margin-top: 8px;
+}
+
+p {
+    margin: 5px;
+}
+
+.card-content {
+    margin-top: 16px;
+}
+
+.iconAndText {
+    display: flex;
+    align-items: center;
+}
+
+.nameContAddre {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(43, 41, 41);
+}
+
+.section-icon {
+    margin-right: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .user-card {
+        padding: 16px;
+        height: auto;
+    }
+
+    .user-avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .userName {
+        font-size: 20px !important;
+        font-weight: 800 !important;
+    }
+
+
+    .public-profile-btn {
+        width: 100% !important;
+    }
+}
