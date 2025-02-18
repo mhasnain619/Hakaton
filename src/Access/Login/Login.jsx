@@ -32,8 +32,8 @@ const LoginPage = () => {
 
         signInWithEmailAndPassword(auth, userLoginData.email, userLoginData.password)
             .then((userCredential) => {
-                console.log(userCredential.user.uid);
                 localStorage.setItem('uid', userCredential.user.uid);
+                localStorage.setItem('role', userCredential.user.role);
                 setOpen(true);
                 setTimeout(() => {
                     navigate('/');

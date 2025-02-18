@@ -23,6 +23,7 @@ const UpdateStudent = () => {
     // console.log(id);
     React.useEffect(() => {
         const fetchStudents = async () => {
+            openLoader(true)
             try {
                 const querySnapshot = await getDocs(collection(db, "students"));
                 const teacherData = querySnapshot.docs.map(doc => ({

@@ -37,6 +37,7 @@ export default function StudentList() {
     let [openLoader, setOpenLoader] = React.useState(false)
     const [students, setStudents] = React.useState([])
     const [role, setRole] = React.useState('user')
+    const [isDisabled, setIsDisabled] = React.useState(false)
     const navigate = useNavigate()
     React.useEffect(() => {
         let userTRype = localStorage.getItem('role')
@@ -115,8 +116,8 @@ export default function StudentList() {
                                     <StyledTableCell>{e.userNumber || 'N/A'}</StyledTableCell>
                                     <StyledTableCell>{e.gender || 'N/A'}</StyledTableCell>
                                     {role?.toLowerCase() === "admin" && <Box className='controls'>
-                                        <Button onClick={() => deleteStudent(e.id)} sx={{ mx: 1 }} variant='contained'>Delete</Button>
-                                        <Button onClick={() => GotoUpdateStudent(e.id)} sx={{ mx: 1 }} variant='contained'>Update</Button>
+                                        <Button disabled onClick={() => deleteStudent(e.id)} sx={{ mx: 1 }} variant='contained'>Delete</Button>
+                                        <Button disabled onClick={() => GotoUpdateStudent(e.id)} sx={{ mx: 1 }} variant='contained'>Update</Button>
                                     </Box>}
                                 </StyledTableRow>
                             ))

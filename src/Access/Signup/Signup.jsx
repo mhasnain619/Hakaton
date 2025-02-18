@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Button, Typography, Box, InputAdornment, IconButton, Snackbar, Alert } from "@mui/material";
+import { Grid, Button, Typography, Box, InputAdornment, IconButton, Snackbar, Alert, CircularProgress } from "@mui/material";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import "./Signup.css";
@@ -20,6 +20,7 @@ const SignupPage = () => {
         password: "",
         confirmPassword: "",
     });
+    let [openLoader, setOpenLoader] = React.useState(false)
     const [error, setError] = useState({});  // Added error state
 
     const dispatch = useDispatch();
@@ -40,19 +41,23 @@ const SignupPage = () => {
     const roles = ["Admin", "User"];
 
     const getCredentials = () => {
+        setOpenLoader(true)
         const validationErrors = validateInputs();
         if (Object.keys(validationErrors).length > 0) {
-            setError(validationErrors);  // Set the error state
+            setError(validationErrors);
+            setOpenLoader(false);
             return;
         }
-
+        setOpenLoader(true);
         dispatch(signupUser(credentials))
             .unwrap()
             .then(() => {
+                setOpenLoader(false)
                 setOpen(true);
-                setTimeout(() => navigate('/'), 1000);
+                navigate('/');
             })
             .catch((err) => {
+                setOpenLoader(false);
                 setError(prevError => ({ ...prevError, general: err?.message || "Signup failed" }));
             });
     };
@@ -174,7 +179,7 @@ const SignupPage = () => {
                         }}
                     />
                     <Button onClick={getCredentials} fullWidth className="loginButton" size="large" variant="contained" disabled={loading}>
-                        {loading ? "Signing Up..." : "Signup"}
+                        {openLoader ? <CircularProgress size={24} sx={{ color: 'white' }} /> : "Signup"}
                     </Button>
                 </Box>
                 <Typography variant="body2" align="center" className="orText">
