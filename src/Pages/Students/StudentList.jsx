@@ -36,7 +36,14 @@ export default function StudentList() {
     let [refresh, setRefresh] = React.useState(false)
     let [openLoader, setOpenLoader] = React.useState(false)
     const [students, setStudents] = React.useState([])
+    const [role, setRole] = React.useState('user')
     const navigate = useNavigate()
+    React.useEffect(() => {
+        let userTRype = localStorage.getItem('role')
+        setRole(userTRype)
+    }, [])
+
+
     React.useEffect(() => {
         const fetchStudents = async () => {
             setOpenLoader(true)
@@ -107,10 +114,10 @@ export default function StudentList() {
                                     <StyledTableCell>{e.userEmail || 'N/A'}</StyledTableCell>
                                     <StyledTableCell>{e.userNumber || 'N/A'}</StyledTableCell>
                                     <StyledTableCell>{e.gender || 'N/A'}</StyledTableCell>
-                                    <Box className='controls'>
+                                    {role?.toLowerCase() === "admin" && <Box className='controls'>
                                         <Button onClick={() => deleteStudent(e.id)} sx={{ mx: 1 }} variant='contained'>Delete</Button>
                                         <Button onClick={() => GotoUpdateStudent(e.id)} sx={{ mx: 1 }} variant='contained'>Update</Button>
-                                    </Box>
+                                    </Box>}
                                 </StyledTableRow>
                             ))
                         ) : (

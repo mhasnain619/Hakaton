@@ -9,6 +9,7 @@ export const signupUser = createAsyncThunk('auth/signupUser', async (credentials
         const userCredentials = await createUserWithEmailAndPassword(auth, credentials.email, credentials.password);
         const user = userCredentials.user
         await updateProfile(user, { displayName: credentials.name })
+        debugger
         await setDoc(doc(db, 'users', user.uid), {
             name: credentials.name,
             email: credentials.email,
@@ -16,6 +17,7 @@ export const signupUser = createAsyncThunk('auth/signupUser', async (credentials
             uid: user.uid
         })
         localStorage.setItem('uid', user.uid)
+        localStorage.setItem('role', credentials.role)
         return { uid: user.uid, name: credentials.name, email: credentials.email, role: credentials.role };
     } catch (error) {
         return rejectWithValue(error.message)

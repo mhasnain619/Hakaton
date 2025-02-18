@@ -65,7 +65,7 @@ const SignupPage = () => {
     const handleClickShowPassword = () => setShowPassword(!showPassword);
 
     return (
-        <Grid container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Grid container sx={{ margin: '0px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <Grid item xs={12} md={6}
                 sx={{
                     display: 'flex',
@@ -170,7 +170,7 @@ const SignupPage = () => {
                                         {showPassword ? <VisibilityOff /> : <Visibility />}
                                     </IconButton>
                                 </InputAdornment>
-                            ),
+                            )
                         }}
                     />
                     <Button onClick={getCredentials} fullWidth className="loginButton" size="large" variant="contained" disabled={loading}>

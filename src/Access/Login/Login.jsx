@@ -35,7 +35,9 @@ const LoginPage = () => {
                 console.log(userCredential.user.uid);
                 localStorage.setItem('uid', userCredential.user.uid);
                 setOpen(true);
-                navigate('/');
+                setTimeout(() => {
+                    navigate('/');
+                }, 1000)
             })
             .catch((error) => {
                 setError(error.message);
