@@ -197,7 +197,7 @@ function ResponsiveDrawer(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h5" noWrap component="div">
-                        LMS
+                        Hakaton
                     </Typography>
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">

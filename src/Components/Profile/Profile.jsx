@@ -3,7 +3,7 @@ import { AuthCredential, getAuth, onAuthStateChanged } from 'firebase/auth';
 import { Card, CardContent, Typography, Avatar, Button, Grid, Box } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { FaLocationDot } from "react-icons/fa6";
-
+import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
 
 import {
     Business as BusinessIcon,
@@ -122,8 +122,8 @@ const UserProfile = () => {
                                 <Box style={{ textAlign: 'start' }}>
                                     <p className='nameContAddre'>Role :</p>
                                     <span className='Address'>
-                                        <FaLocationDot className='locationIcon' />
-                                        <p>{role || "No Address Available"}</p>
+                                        <AdminPanelSettingsTwoToneIcon className='locationIcon' />
+                                        <p>{role || "No Role Added"}</p>
                                     </span>
                                 </Box>
                             </Grid>

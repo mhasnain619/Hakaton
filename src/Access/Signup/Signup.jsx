@@ -50,7 +50,7 @@ const SignupPage = () => {
             .unwrap()
             .then(() => {
                 setOpen(true);
-                setTimeout(() => navigate('/'), 2000);
+                setTimeout(() => navigate('/'), 1000);
             })
             .catch((err) => {
                 setError(prevError => ({ ...prevError, general: err?.message || "Signup failed" }));
