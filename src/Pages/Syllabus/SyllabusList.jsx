@@ -38,6 +38,11 @@ export default function SyllabusList() {
     let [refresh, setRefresh] = React.useState(false)
     let [openLoader, setOpenLoader] = React.useState(false)
     const [syllabus, setSyllabus] = React.useState([])
+    const [role, setRole] = React.useState('user')
+    React.useEffect(() => {
+        let userType = localStorage.getItem('role')
+        setRole(userType)
+    }, [])
     React.useEffect(() => {
         const fetchSyllabus = async () => {
             setOpenLoader(true)
@@ -107,10 +112,26 @@ export default function SyllabusList() {
                                     </StyledTableCell>
                                     <StyledTableCell>{e.syllabusClass || 'N/A'}</StyledTableCell>
                                     <StyledTableCell>{e.syllabusFile || 'N/A'}</StyledTableCell>
-                                    <Box className='controls'>
-                                        <Button onClick={() => deleteSyllabus(e.id)} sx={{ mx: 1 }} variant='contained'>Delete</Button>
-                                        <Button onClick={() => GotoUpdateSyllabus(e.id)} sx={{ mx: 1 }} variant='contained'>Update</Button>
-                                    </Box>
+                                    {(role?.toLowerCase() === "admin" || role?.toLowerCase() === "user") && (
+                                        <Box className="controls">
+                                            <Button
+                                                disabled={role?.toLowerCase() === "user"}
+                                                onClick={() => deleteSyllabus(e.id)}
+                                                sx={{ mx: 1 }}
+                                                variant="contained"
+                                            >
+                                                Delete
+                                            </Button>
+                                            <Button
+                                                disabled={role?.toLowerCase() === "user"}
+                                                onClick={() => GotoUpdateSyllabus(e.id)}
+                                                sx={{ mx: 1 }}
+                                                variant="contained"
+                                            >
+                                                Update
+                                            </Button>
+                                        </Box>
+                                    )}
                                 </StyledTableRow>
                             ))
                         ) : (

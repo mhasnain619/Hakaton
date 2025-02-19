@@ -34,7 +34,12 @@ export default function ClassList() {
     let [refresh, setRefresh] = React.useState(false)
     const [classes, setClasses] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
+    const [role, setRole] = React.useState('user')
     const navigate = useNavigate()
+    React.useEffect(() => {
+        let userType = localStorage.getItem('role')
+        setRole(userType)
+    }, [])
     React.useEffect(() => {
         const fetchClassess = async () => {
             try {
@@ -104,10 +109,26 @@ export default function ClassList() {
                                     <StyledTableCell>{clas.classUserDate || 'N/A'}</StyledTableCell>
                                     <StyledTableCell>{clas.gender || 'N/A'}</StyledTableCell>
                                     <StyledTableCell>{clas.classUserEmail || 'N/A'}</StyledTableCell>
-                                    <Box className='controls'>
-                                        <Button onClick={() => deleteClass(clas.id)} sx={{ mx: 1 }} variant='contained'>Delete</Button>
-                                        <Button onClick={() => goToUpdateClass(clas.id)} sx={{ mx: 1 }} variant='contained'>Update</Button>
-                                    </Box>
+                                    {(role?.toLowerCase() === "admin" || role?.toLowerCase() === "user") && (
+                                        <Box className="controls">
+                                            <Button
+                                                disabled={role?.toLowerCase() === "user"}
+                                                onClick={() => deleteClass(clas.id)}
+                                                sx={{ mx: 1 }}
+                                                variant="contained"
+                                            >
+                                                Delete
+                                            </Button>
+                                            <Button
+                                                disabled={role?.toLowerCase() === "user"}
+                                                onClick={() => goToUpdateClass(clas.id)}
+                                                sx={{ mx: 1 }}
+                                                variant="contained"
+                                            >
+                                                Update
+                                            </Button>
+                                        </Box>
+                                    )}
                                 </StyledTableRow>
                             ))
                         ) : (

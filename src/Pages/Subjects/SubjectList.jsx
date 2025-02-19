@@ -39,7 +39,12 @@ export default function SubjectList() {
     let [refresh, setRefresh] = React.useState(false)
     let [openLoader, setOpenLoader] = React.useState(false)
     const [subjects, setSubjects] = React.useState([])
+    const [role, setRole] = React.useState('user')
     const navigate = useNavigate()
+    React.useEffect(() => {
+        let userType = localStorage.getItem('role')
+        setRole(userType)
+    }, [])
     React.useEffect(() => {
         const fetchSubjects = async () => {
             setOpenLoader(true)
@@ -109,10 +114,26 @@ export default function SubjectList() {
                                         </StyledTableCell>
                                         <StyledTableCell>{e.subjectClass || 'N/A'}</StyledTableCell>
                                         <StyledTableCell>{e.selectGroup || 'N/A'}</StyledTableCell>
-                                        <Box className='controls'>
-                                            <Button onClick={() => deleteSubject(e.id)} sx={{ mx: 1 }} variant='contained'>Delete</Button>
-                                            <Button onClick={() => GotoUpdateSubject(e.id)} sx={{ mx: 1 }} variant='contained'>Update</Button>
-                                        </Box>
+                                        {(role?.toLowerCase() === "admin" || role?.toLowerCase() === "user") && (
+                                            <Box className="controls">
+                                                <Button
+                                                    disabled={role?.toLowerCase() === "user"}
+                                                    onClick={() => deleteSubject(e.id)}
+                                                    sx={{ mx: 1 }}
+                                                    variant="contained"
+                                                >
+                                                    Delete
+                                                </Button>
+                                                <Button
+                                                    disabled={role?.toLowerCase() === "user"}
+                                                    onClick={() => GotoUpdateSubject(e.id)}
+                                                    sx={{ mx: 1 }}
+                                                    variant="contained"
+                                                >
+                                                    Update
+                                                </Button>
+                                            </Box>
+                                        )}
                                     </StyledTableRow>
                                 ))
                             ) : (

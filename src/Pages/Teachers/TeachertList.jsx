@@ -37,8 +37,12 @@ export default function TeacherList() {
     let [refresh, setRefresh] = React.useState(false)
     const [teachers, setTeachers] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
+    const [role, setRole] = React.useState('user')
     const navigate = useNavigate();
-
+    React.useEffect(() => {
+        let userType = localStorage.getItem('role')
+        setRole(userType)
+    }, [])
     React.useEffect(() => {
         const fetchTeachers = async () => {
             setLoading(true)
@@ -57,7 +61,7 @@ export default function TeacherList() {
         };
         fetchTeachers();
     }, [refresh]);
-    const deleteStudent = async (id) => {
+    const deleteTeacher = async (id) => {
         await deleteDoc(doc(db, "teachers", id));
         setRefresh(!refresh)
     }
@@ -111,10 +115,26 @@ export default function TeacherList() {
                                     <StyledTableCell>{teacher.teacherEmail || 'N/A'}</StyledTableCell>
                                     <StyledTableCell>{teacher.teacherNumber || 'N/A'}</StyledTableCell>
                                     <StyledTableCell>{teacher.gender || 'N/A'}</StyledTableCell>
-                                    <Box className='controls'>
-                                        <Button onClick={() => deleteStudent(teacher.id)} sx={{ mx: 1 }} variant='contained'>Delete</Button>
-                                        <Button onClick={() => goToUpdateTeacher(teacher.id)} sx={{ mx: 1 }} variant='contained'>Update</Button>
-                                    </Box>
+                                    {(role?.toLowerCase() === "admin" || role?.toLowerCase() === "user") && (
+                                        <Box className="controls">
+                                            <Button
+                                                disabled={role?.toLowerCase() === "user"}
+                                                onClick={() => deleteTeacher(teacher.id)}
+                                                sx={{ mx: 1 }}
+                                                variant="contained"
+                                            >
+                                                Delete
+                                            </Button>
+                                            <Button
+                                                disabled={role?.toLowerCase() === "user"}
+                                                onClick={() => goToUpdateTeacher(teacher.id)}
+                                                sx={{ mx: 1 }}
+                                                variant="contained"
+                                            >
+                                                Update
+                                            </Button>
+                                        </Box>
+                                    )}
                                 </StyledTableRow>
                             ))
                         ) : (
