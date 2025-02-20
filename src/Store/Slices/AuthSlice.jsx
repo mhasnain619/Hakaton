@@ -19,6 +19,8 @@ export const signupUser = createAsyncThunk('auth/signupUser', async (credentials
         localStorage.setItem('role', credentials.role)
         return { uid: user.uid, name: credentials.name, email: credentials.email, role: credentials.role };
     } catch (error) {
+        console.log(error.message);
+
         return rejectWithValue(error.message)
     }
 })

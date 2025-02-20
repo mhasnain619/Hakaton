@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { AuthCredential, getAuth, onAuthStateChanged } from 'firebase/auth';
-import { Card, CardContent, Typography, Avatar, Button, Grid, Box } from '@mui/material';
-import CircularProgress from '@mui/material/CircularProgress';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { Card, CardContent, Typography, Avatar, Button, Grid, Box, CircularProgress } from '@mui/material';
 import { FaLocationDot } from "react-icons/fa6";
 import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
 
@@ -9,7 +8,6 @@ import {
     Business as BusinessIcon,
     Email as EmailIcon,
     Phone as PhoneIcon,
-    LocationOn as LocationOnIcon,
     Language as LanguageIcon,
 } from '@mui/icons-material';
 
@@ -24,7 +22,8 @@ const UserProfile = () => {
     const [role, setRole] = useState(null);
     const [loading, setLoading] = useState(true);
     const auth = getAuth();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
             if (currentUser) {
@@ -46,25 +45,26 @@ const UserProfile = () => {
         return () => unsubscribe();
     }, []);
 
-    if (loading) {
-        return <CircularProgress />;
-    }
     const logout = () => {
-        localStorage.removeItem('uid')
-        localStorage.removeItem('role')
-        navigate('/login')
-    }
+        localStorage.removeItem('uid');
+        localStorage.removeItem('role');
+        navigate('/login');
+    };
 
     return (
         <Box sx={{ py: 8 }}>
-            {user ? (
+            {loading ? (
+                <Box display="flex" alignItems="center">
+                    <CircularProgress size={40} color="primary" />
+                </Box>
+            ) : user ? (
                 <Card className="user-card">
                     <Grid container spacing={2}>
                         {/* User Avatar and Basic Info */}
                         <Grid item xs={12} md={3} display="flex" justifyContent="center" alignItems="center">
                             <Avatar
                                 alt={user.displayName || "User"}
-                                src={userImg} //user.photoURL || 
+                                src={userImg} // user.photoURL ||
                                 className="user-avatar"
                             />
                         </Grid>
@@ -88,7 +88,7 @@ const UserProfile = () => {
                     {/* Additional User Details */}
                     <CardContent className="card-content">
                         <Grid container spacing={1}>
-                            {/* Company Placeholder (Firebase doesn't store it by default) */}
+                            {/* Company Placeholder */}
                             <Grid item xs={12} md={5}>
                                 <Box style={{ textAlign: 'start' }}>
                                     <p className='nameContAddre'>Company Details :</p>
@@ -118,7 +118,7 @@ const UserProfile = () => {
                                 </Box>
                             </Grid>
 
-                            {/* Address Placeholder */}
+                            {/* Role */}
                             <Grid item xs={12} md={2}>
                                 <Box style={{ textAlign: 'start' }}>
                                     <p className='nameContAddre'>Role :</p>
@@ -132,8 +132,10 @@ const UserProfile = () => {
                     </CardContent>
                 </Card>
             ) : (
-                <Box>
-                    <Typography variant="h6" component="h2" className="title">No User Found...</Typography>
+                <Box display="flex" justifyContent="center" alignItems="center" height="50vh">
+                    <Typography variant="h6" component="h2" className="title">
+                        No User Found...
+                    </Typography>
                 </Box>
             )}
         </Box>

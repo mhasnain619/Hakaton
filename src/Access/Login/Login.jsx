@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, TextField, Button, Checkbox, FormControlLabel, Typography, Box, InputAdornment, IconButton, Alert, Snackbar } from "@mui/material";
+import { Grid, TextField, Button, Checkbox, FormControlLabel, Typography, Box, InputAdornment, IconButton, Alert, Snackbar, CircularProgress } from "@mui/material";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
@@ -17,15 +17,18 @@ const LoginPage = () => {
     const [errors, setErrors] = useState({ email: "", password: "" });
     const [error, setError] = useState("");
     const [open, setOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(false)
 
     const navigate = useNavigate();
 
     const userLogedIn = () => {
+        setIsLoading(true)
         let validationErrors = {};
         if (!userLoginData.email) validationErrors.email = "Please enter your email.";
         if (!userLoginData.password) validationErrors.password = "Please enter your password.";
 
         if (Object.keys(validationErrors).length > 0) {
+            setIsLoading(false)
             setErrors(validationErrors);
             return;
         }
@@ -35,12 +38,14 @@ const LoginPage = () => {
                 localStorage.setItem('uid', userCredential.user.uid);
                 localStorage.setItem('role', userCredential.user.role);
                 setOpen(true);
+                setIsLoading(false)
                 setTimeout(() => {
                     navigate('/');
                 }, 1000)
             })
             .catch((error) => {
                 setError(error.message);
+                setIsLoading(false)
             });
     };
 
@@ -154,7 +159,7 @@ const LoginPage = () => {
 
                 </Box>
                 <Button onClick={userLogedIn} fullWidth size="large" variant="contained">
-                    Login
+                    {isLoading ? <CircularProgress size={24} sx={{ color: 'white' }} /> : "Login"}
                 </Button>
 
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 1 }}>
@@ -166,8 +171,8 @@ const LoginPage = () => {
                     </Typography>
                 </Box>
 
-                <Typography variant="body2" align="center" color="primary">
-                    or
+                <Typography variant="body2" align="center" className="orText">
+                    Or
                 </Typography>
 
                 <Typography sx={{ mt: '5px' }} onClick={loginWithGoogle} variant="body2" align="center" color="primary" className="clickable">

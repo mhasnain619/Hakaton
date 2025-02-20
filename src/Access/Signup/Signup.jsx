@@ -42,29 +42,34 @@ const SignupPage = () => {
 
     const getCredentials = () => {
         setOpenLoader(true)
+        setError({});
         const validationErrors = validateInputs();
         if (Object.keys(validationErrors).length > 0) {
             setError(validationErrors);
             setOpenLoader(false);
             return;
         }
-        setOpenLoader(true);
         dispatch(signupUser(credentials))
             .unwrap()
             .then(() => {
-                setOpenLoader(false)
+                setOpenLoader(false);
                 setOpen(true);
                 navigate('/');
             })
             .catch((err) => {
                 setOpenLoader(false);
-                setError(prevError => ({ ...prevError, general: err?.message || "Signup failed" }));
+                console.error("Firebase Error:", err); // ✅ Check what Firebase is returning
+                setError(prevError => ({
+                    ...prevError,
+                    general: err
+                }));
             });
     };
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') return;
         setOpen(false);
+        setError(prevError => ({ ...prevError, general: "" })); // Reset general error
     };
 
     const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -88,7 +93,12 @@ const SignupPage = () => {
                         Account Created Successfully!
                     </Alert>
                 </Snackbar>
-                <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={!!error?.general} autoHideDuration={3000} onClose={handleClose}>
+                <Snackbar
+                    anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                    open={!!error?.general} // Only open if there's an error
+                    autoHideDuration={3000}
+                    onClose={handleClose}
+                >
                     <Alert onClose={handleClose} severity="error" variant="filled">
                         {error?.general}
                     </Alert>
