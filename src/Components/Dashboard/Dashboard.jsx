@@ -62,6 +62,7 @@ function ResponsiveDrawer(props) {
     };
     const handleLogout = () => {
         localStorage.removeItem('uid')
+        localStorage.removeItem('role')
         navigate('/login')
     }
 

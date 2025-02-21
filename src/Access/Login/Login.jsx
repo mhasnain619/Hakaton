@@ -3,13 +3,14 @@ import { Grid, TextField, Button, Checkbox, FormControlLabel, Typography, Box, I
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "../../FirebaseConfiq";
+import { auth, db } from "../../FirebaseConfiq";
 import { useNavigate } from "react-router-dom";
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import loginImage from '../../assets/signupBgRemove.png';
 import waveImg from '../../assets/wave.png';
 import './Login.css'
 import Input from "../../Components/Input/Input";
+import { doc, getDoc } from "firebase/firestore";
 
 const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -21,39 +22,51 @@ const LoginPage = () => {
 
     const navigate = useNavigate();
 
-    const userLogedIn = () => {
-        setIsLoading(true)
+    const userLogedIn = async () => {
+        setIsLoading(true);
         let validationErrors = {};
+
         if (!userLoginData.email) validationErrors.email = "Please enter your email.";
         if (!userLoginData.password) validationErrors.password = "Please enter your password.";
 
         if (Object.keys(validationErrors).length > 0) {
-            setIsLoading(false)
-            setErrors(validationErrors);
-            return;
+            setErrors(validationErrors); // Ensure errors are set correctly
+            setIsLoading(false);
+            return; // Stop execution if there are errors
         }
 
-        signInWithEmailAndPassword(auth, userLoginData.email, userLoginData.password)
-            .then((userCredential) => {
-                localStorage.setItem('uid', userCredential.user.uid);
-                localStorage.setItem('role', userCredential.user.role);
-                setOpen(true);
-                setIsLoading(false)
-                setTimeout(() => {
-                    navigate('/');
-                }, 1000)
-            })
-            .catch((error) => {
-                setError(error.message);
-                setIsLoading(false)
-            });
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, userLoginData.email, userLoginData.password);
+            const user = userCredential.user;
+            localStorage.setItem("uid", user.uid);
+
+            // Fetch user role from Firestore
+            const userDoc = await getDoc(doc(db, "users", user.uid));
+            if (userDoc.exists()) {
+                const role = userDoc.data().role;
+                localStorage.setItem("role", role);
+            } else {
+                console.warn("No user document found!");
+            }
+
+            setOpen(true);
+            setIsLoading(false);
+            setTimeout(() => {
+                navigate("/");
+            }, 1000);
+        } catch (error) {
+            setError(error.message);
+            setIsLoading(false);
+        }
     };
+
 
     const loginWithGoogle = () => {
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
             .then((result) => {
                 localStorage.setItem("uid", result.user.uid);
+                localStorage.setItem("role", result.user.role);
                 console.log("Google Login Success:", result.user);
                 navigate('/dashboard');
             })
