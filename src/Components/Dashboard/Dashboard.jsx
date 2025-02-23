@@ -29,7 +29,7 @@ import { BiSolidSchool } from "react-icons/bi";
 import { SiGoogleclassroom } from "react-icons/si";
 
 // import './Layout.css'
-const drawerWidth = 230;
+const drawerWidth = 250;
 
 function ResponsiveDrawer(props) {
     const navigate = useNavigate();
@@ -65,74 +65,88 @@ function ResponsiveDrawer(props) {
         localStorage.removeItem('role')
         navigate('/login')
     }
+    let role = localStorage.getItem('role')
+    console.log(role);
 
     const pages = [
-        { name: "Home", icon: <FaHome />, route: "/home" },
-        {
-            name: "Admission", icon: <MdOutlineAdminPanelSettings />, children: [
-                { name: "Admission Form", route: "/admission/admission-form" },
 
-            ]
-        },
+        // {
+        //     name: "Customer Management", icon: <MdOutlineAdminPanelSettings />, children: [
+        //         { name: "Admission Form", route: "/admission/admission-form" },
+
+        //     ]
+        // },
 
         {
-            name: "Students", icon: <PiStudentBold />, children: [
-                { name: "Student Registration", route: "/student/student-registration" },
-                { name: "Student List", route: "/student/student-list" }
+            name: "Customer Management", icon: <PiStudentBold />, children: [
+                // { name: "Student Registration", route: "/student/student-registration" },
+                // { name: "Student List", route: "/student/student-list" },
+                { name: "Customer Details", route: "/customer/customer-details", type: "customer" },
             ]
         },
         {
-            name: "Teachers", icon: <FaChalkboardTeacher />, children: [
-                { name: "Teacher Registration", route: "/teacher/teacher-registration" },
-                { name: "Teacher List", route: "/teacher/teacher-list" }
+            name: "Room Management", icon: <FaChalkboardTeacher />, children: [
+                // { name: "Teacher Registration", route: "/teacher/teacher-registration" },
+                // { name: "Teacher List", route: "/teacher/teacher-list" },
+                { name: "Our Rooms", route: "/rooms/our-rooms", type: "customer" },
             ]
         },
         {
-            name: "Subjects", icon: <MdOutlineSubject />, children: [
-                { name: "Add Subject", route: "/subject/add-subject" },
-                { name: "Subjects List", route: "/subject/subject-list" }
-            ]
-        },
-        {
-            name: "Syllabus", icon: <FaBook />, children: [
-                { name: "Add Syllabus", route: "/syllabus/add-syllabus" },
-                { name: "Syllabus List", route: "/syllabus/syllabus-list" }
-            ]
-        },
-        {
-            name: "School", icon: <BiSolidSchool />, children: [
-                { name: "Student Registration", route: "/school/school-student-registration" },
-                { name: "Teacher Registration", route: "/school/school-teacher-registration" }
-            ]
-        },
-        {
-            name: "Class", icon: <SiGoogleclassroom />, children: [
-                { name: "Class Form", route: "/class/class-form" },
-                { name: "Class List", route: "/class/class-list" }
+            name: "Booking Management", icon: <FaChalkboardTeacher />, children: [
+                // { name: "Teacher Registration", route: "/teacher/teacher-registration" },
+                // { name: "Teacher List", route: "/teacher/teacher-list" },
+                { name: "Add Room", route: "/rooms/add-room", type: "admin" },
+                { name: "Book Room", route: "/rooms/room-list", type: "customer" },
             ]
         },
 
         {
-            name: "Fees", icon: <MdFeed />, children: [
-                { name: "Fees Structure", route: "/fees/fees-structure" },
-                { name: "Fees Voucher", route: "/fees/fees-voucher" },
-                { name: "Fees Submission", route: "/fees/fees-submission" },
-
+            name: "Service Management ", icon: <FaBook />, children: [
+                // { name: "Add Syllabus", route: "/syllabus/add-syllabus" },
+                // { name: "Syllabus List", route: "/syllabus/syllabus-list" }
+                { name: "Services", route: "/services/services-list", type: "customer" }
             ]
         },
         {
-            name: "Exam", icon: <PiExamFill />, children: [
-                { name: "Exam Schedule", route: "/exam/exam-schedule" },
-                { name: "Exam Result", route: "/exam/exam-result" },
+            name: "Payment Management", icon: <MdOutlineSubject />, children: [
+                // { name: "Add Subject", route: "/subject/add-subject" },
+                // { name: "Subjects List", route: "/subject/subject-list" }
+                { name: "Booking Payments", route: "/Booking/booking-payments", type: "customer" }
             ]
         },
-        { name: "Contact Us", icon: <MdContactPage />, route: "/contact" },
+        {
+            name: "Inventory Management", icon: <BiSolidSchool />, children: [
+                // { name: "Student Registration", route: "/school/school-student-registration" },
+                // { name: "Teacher Registration", route: "/school/school-teacher-registration" }
+            ]
+        },
+        {
+            name: "Report Generation ", icon: <SiGoogleclassroom />, children: [
+                // { name: "Class Form", route: "/class/class-form" },
+                // { name: "Class List", route: "/class/class-list" }
+            ]
+        },
+
+        {
+            name: "Profile Management", icon: <MdFeed />, children: [
+                // { name: "Fees Structure", route: "/fees/fees-structure" },
+                // { name: "Fees Voucher", route: "/fees/fees-voucher" },
+                // { name: "Fees Submission", route: "/fees/fees-submission" },
+
+            ]
+        },
+        // {
+        //     name: "Exam", icon: <PiExamFill />, children: [
+        //         { name: "Exam Schedule", route: "/exam/exam-schedule" },
+        //         { name: "Exam Result", route: "/exam/exam-result" },
+        //     ]
+        // },
+        // { name: "Contact Us", icon: <MdContactPage />, route: "/contact" },
     ];
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-
     const drawer = (
         <div>
             {/* <Toolbar /> */}
@@ -157,13 +171,19 @@ function ResponsiveDrawer(props) {
                             <Collapse in={openMenus[obj.name]} timeout="auto" unmountOnExit>
                                 <List component="div" disablePadding>
                                     {obj.children.map((child, idx) => (
-                                        <ListItem sx={{ background: child.route === currentPath ? "#E1E1E2" : '' }} key={idx} disablePadding>
+                                        role?.toLowerCase() === "admin" ? <ListItem sx={{ background: child.route === currentPath ? "#E1E1E2" : '' }} key={idx} disablePadding>
                                             <ListItemButton sx={{ pl: 4 }} onClick={() => {
                                                 navigate(child.route)
                                             }}>
                                                 <ListItemText primary={child.name} />
                                             </ListItemButton>
-                                        </ListItem>
+                                        </ListItem> : child.type !== 'admin' ? <ListItem sx={{ background: child.route === currentPath ? "#E1E1E2" : '' }} key={idx} disablePadding>
+                                            <ListItemButton sx={{ pl: 4 }} onClick={() => {
+                                                navigate(child.route)
+                                            }}>
+                                                <ListItemText primary={child.name} />
+                                            </ListItemButton>
+                                        </ListItem> : ""
                                     ))}
                                 </List>
                             </Collapse>
@@ -197,8 +217,8 @@ function ResponsiveDrawer(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h5" noWrap component="div">
-                        Hakaton
+                    <Typography variant="h5" className="hms" noWrap component="div">
+                        Hotel Management System
                     </Typography>
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
@@ -277,56 +297,7 @@ function ResponsiveDrawer(props) {
             >
 
                 {document.location.pathname === '/' && <Box sx={{ display: 'flex', flexDirection: 'column', gap: '5px', py: 6 }}>
-                    <h3>
-                        Welcome to the Learning Management System (LMS)
-                    </h3>
 
-                    <p>
-                        This platform is designed to streamline and enhance the management of educational institutions.
-                    </p>
-                    <h3>
-                        Key Features :
-                    </h3>
-                    <h3>
-                        Student Management :
-                    </h3>
-                    <p>
-                        Register students, maintain student lists, and manage their profiles efficiently.
-                    </p>
-
-                    <h3>
-                        Teacher Management :
-                    </h3>
-                    <p>
-                        Add new teachers, update information, and keep track of their assigned classes and subjects.
-                    </p>
-                    <h3>
-                        Subjects & Syllabus :
-                    </h3>
-                    <p>
-                        Organize subject details and syllabus structures to ensure a structured learning experience.
-                    </p>
-                    <h3>
-                        School & Classes :
-                    </h3>
-                    <p>
-                        Manage school information, class structures, and student-teacher assignments.
-                    </p>
-                    <h3>
-                        Admissions & Fees :
-                    </h3>
-                    <p>
-                        Handle student admissions, fee collection, and payment tracking.
-                    </p>
-                    <h3>
-                        Examinations :
-                    </h3>
-                    <p>
-                        Schedule and manage exams, results, and grading systems.
-                    </p>
-                    <p>
-                        This LMS ensures seamless administrative operations and improves overall academic management.
-                    </p>
 
                 </Box>}
 

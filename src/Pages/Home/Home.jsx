@@ -1,32 +1,45 @@
-import { Box } from '@mui/material'
-import './home.css'
+import { Box, Grid, Typography, Button } from '@mui/material';
+import './home.css';
+import image from '../../assets/removeBg.png';
+import { useNavigate } from 'react-router-dom';
+
 
 const Home = () => {
+    const navigate = useNavigate()
     return (
-        <Box className='mainBox' sx={{ py: 6 }}>
-            <h2>Welcome to the Learning Management System (LMS)</h2>
-            <p>Our <strong>Learning Management System (LMS)</strong> is designed to simplify and enhance the management of educational institutions, making learning more accessible and administration more efficient.</p>
+        <Box sx={{ px: 4, backgroundColor: '#2845AD', height: '100vh', display: 'flex', alignItems: 'center' }}>
+            <Grid container alignItems="center" spacing={4}>
+                {/* Text Section */}
+                <Grid item xs={12} md={6}>
+                    <Typography variant="h5" color="#dceeff" fontWeight="500">
+                        One Solution to Replace Them All!
+                    </Typography>
+                    <Typography variant="h2" fontWeight="bold" color='white' gutterBottom>
+                        Welcome to the Leading Hotel Management Software
+                    </Typography>
+                    <Typography variant="h6" color="#dceeff" gutterBottom>
+                        for Accommodations in <span style={{ color: '#1976d2', fontWeight: 'bold' }}>PAKISTAN</span>
+                    </Typography>
 
-            <h3>Why Choose Our LMS?</h3>
-            <ul>
-                <li><strong>✅ Student & Teacher Management : </strong> <br /> Easily register, track, and manage students and teachers.</li>
-                <li><strong>✅ Subjects & Syllabus Organization : </strong> <br /> Keep subjects and syllabi well-structured for a better learning experience.</li>
-                <li><strong>✅ Admissions & Fees Tracking : </strong> <br /> Streamline the admission process and manage fee collections effortlessly.</li>
-                <li><strong>✅ Class & School Administration : </strong> <br /> Organize classes, timetables, and institutional details in one place.</li>
-                <li><strong>✅ Exam Management : </strong> <br /> Conduct, evaluate, and store exam results efficiently.</li>
-            </ul>
+                    {/* Buttons */}
+                    <Box mt={3} display="flex" gap={2}>
+                        <Button onClick={() => navigate('/signup')} variant="contained" color="primary" size="large" sx={{ borderRadius: 8, px: 4, py: 1.5 }}>
+                            Sign Up
+                        </Button>
+                        <Button onClick={() => navigate('/login')} variant="contained" color="primary" size="large" sx={{ borderRadius: 8, px: 4, py: 1.5 }}>
+                            Login
+                        </Button>
 
-            <h3>Key Features</h3>
-            <ol>
-                <li><strong>📌 User-Friendly Dashboard : </strong> <br /> Access all features with an intuitive interface.</li>
-                <li><strong>📌 Secure & Reliable : </strong> <br /> Data security is our priority to ensure a safe experience.</li>
-                <li><strong>📌 Efficient Workflow : </strong> <br /> Save time and effort with an all-in-one educational management system.</li>
-            </ol>
+                    </Box>
+                </Grid>
 
-            <h2>Get Started Today!</h2>
-            <p>Navigate through the menu to explore the full functionality of our LMS and experience seamless educational management. 🚀</p>
-        </Box >
-    )
-}
+                {/* Image Section */}
+                <Grid item xs={12} md={6} display="flex" justifyContent="center">
+                    <Box component="img" src={image} alt="Hotel Management" sx={{ maxWidth: '100%', height: 'auto' }} />
+                </Grid>
+            </Grid>
+        </Box>
+    );
+};
 
-export default Home
+export default Home;

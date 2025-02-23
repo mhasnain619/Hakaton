@@ -68,7 +68,7 @@ const LoginPage = () => {
                 localStorage.setItem("uid", result.user.uid);
                 localStorage.setItem("role", result.user.role);
                 console.log("Google Login Success:", result.user);
-                navigate('/dashboard');
+                navigate('/');
             })
             .catch((error) => {
                 setError(error.message);

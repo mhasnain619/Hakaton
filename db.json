@@ -1,0 +1,223 @@
+{
+  "rooms": [
+    {
+      "id": 101,
+      "roomNumber": "101",
+      "type": "Deluxe",
+      "status": "Booked",
+      "price": 120,
+      "imageSrc": "https://thumbs.dreamstime.com/b/hotel-rooms-8146308.jpg",
+      "amenities": [
+        "WiFi",
+        "TV",
+        "Mini Bar",
+        "Air Conditioning"
+      ],
+      "capacity": 2,
+      "bookedID": [],
+      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+    },
+    {
+      "id": 102,
+      "roomNumber": "102",
+      "type": "Standard",
+      "status": "Booked",
+      "price": 80,
+      "imageSrc": "https://t4.ftcdn.net/jpg/02/95/21/53/360_F_295215313_mTUn9iAqmfVHCiEGfOuaz9tmjG0JDa1p.jpg",
+      "amenities": [
+        "WiFi",
+        "TV",
+        "Air Conditioning"
+      ],
+      "capacity": 2,
+      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+    },
+    {
+      "id": 103,
+      "roomNumber": "103",
+      "type": "Suite",
+      "status": "Available",
+      "price": 200,
+      "imageSrc": "https://res.cloudinary.com/traveltripperweb/image/upload/c_limit,f_auto,h_2500,q_auto,w_2500/v1643732012/lsedhhc48clt6jqatp7x.jpg",
+      "amenities": [
+        "WiFi",
+        "TV",
+        "Mini Bar",
+        "Jacuzzi",
+        "Air Conditioning"
+      ],
+      "capacity": 4,
+      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+    },
+    {
+      "id": 104,
+      "roomNumber": "104",
+      "type": "Single",
+      "status": "Available",
+      "price": 60,
+      "imageSrc": "https://fruitbasket.limepack.com/blog/wp-content/uploads/2024/04/pexels-max-vakhtbovycn-6758770.jpg",
+      "amenities": [
+        "WiFi",
+        "TV"
+      ],
+      "capacity": 1,
+      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+    },
+    {
+      "id": 105,
+      "roomNumber": "105",
+      "type": "Deluxe",
+      "status": "Available",
+      "price": 130,
+      "imageSrc": "https://media.cntraveler.com/photos/65f32dfe6bb8cbba5c381160/16:9/w_2580,c_limit/Waldorf%20Astoria%20Washington%20DC_Waldorf%20Astoria%20Washington%20DC%20_%20Bi%20Level%20Loft%20Bedroom.jpg",
+      "amenities": [
+        "WiFi",
+        "TV",
+        "Mini Bar",
+        "Air Conditioning",
+        "Balcony"
+      ],
+      "capacity": 2,
+      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+    },
+    {
+      "id": 106,
+      "roomNumber": "106",
+      "type": "Standard",
+      "status": "Available",
+      "price": 85,
+      "imageSrc": "https://sydneyboulevard.com.au/wp-content/uploads/sites/89/2021/11/Standard-King-1.jpg",
+      "amenities": [
+        "WiFi",
+        "TV",
+        "Air Conditioning"
+      ],
+      "capacity": 2,
+      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+    },
+    {
+      "id": 107,
+      "roomNumber": "107",
+      "type": "Suite",
+      "status": "Available",
+      "price": 210,
+      "imageSrc": "https://www.decorilla.com/online-decorating/wp-content/uploads/2019/01/Luxury-boutique-interior-design-before-and-after-by-Decorilla-1.jpg",
+      "amenities": [
+        "WiFi",
+        "TV",
+        "Mini Bar",
+        "Jacuzzi",
+        "Air Conditioning"
+      ],
+      "capacity": 4,
+      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+    },
+    {
+      "id": 108,
+      "roomNumber": "108",
+      "type": "Double",
+      "status": "Available",
+      "price": 65,
+      "imageSrc": "https://media.nomadicmatt.com/2023/cheaphotelrooms.jpg",
+      "amenities": [
+        "WiFi",
+        "TV"
+      ],
+      "capacity": 1,
+      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+    },
+    {
+      "id": 109,
+      "roomNumber": "109",
+      "type": "Deluxe",
+      "status": "Available",
+      "price": 135,
+      "imageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQgs3Hy8t4qdK1Z5ChsGAeCMZt-Wzf7EtP0Q&s",
+      "amenities": [
+        "WiFi",
+        "TV",
+        "Mini Bar",
+        "Air Conditioning",
+        "Balcony"
+      ],
+      "capacity": 2,
+      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+    },
+    {
+      "id": 110,
+      "roomNumber": "110",
+      "type": "Standard",
+      "status": "Available",
+      "price": 75,
+      "imageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2HK0-d-JZaJHi8iAtUh-MgyYyLmU-uT2C8w&s",
+      "amenities": [
+        "WiFi",
+        "TV",
+        "Air Conditioning"
+      ],
+      "capacity": 2,
+      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+    },
+    {
+      "id": 111,
+      "roomNumber": "111",
+      "type": "Suite",
+      "status": "Available",
+      "price": 220,
+      "imageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGoZMcu3-NaZ4ZThgWqtH8mH2ujeBWE9Frkw&s",
+      "amenities": [
+        "WiFi",
+        "TV",
+        "Mini Bar",
+        "Jacuzzi",
+        "Air Conditioning"
+      ],
+      "capacity": 4,
+      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+    },
+    {
+      "id": 112,
+      "roomNumber": "112",
+      "type": "Single",
+      "status": "Available",
+      "price": 70,
+      "imageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_0RW0hGHXPR2S-Om3xiQYX4pH6wc4rNyOJg&s",
+      "amenities": [
+        "WiFi",
+        "TV"
+      ],
+      "capacity": 1
+    },
+    {
+      "id": 113,
+      "roomNumber": "113",
+      "type": "Deluxe",
+      "status": "Available",
+      "price": 140,
+      "imageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQxrnqIF1ogNSLX2fTAiGLDezfrhqXbKYnLA&s",
+      "amenities": [
+        "WiFi",
+        "TV",
+        "Mini Bar",
+        "Air Conditioning",
+        "Balcony"
+      ],
+      "capacity": 2,
+      "bookedid": "A4qSiy6eTdPyB2xldIfI1iLN0Fu1"
+    },
+    {
+      "id": 114,
+      "roomNumber": "114",
+      "type": "Standard",
+      "status": "Available",
+      "price": 78,
+      "imageSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAm--XV_uK7E7pDKT2BtnJCgfeANbEhrJp1w&s",
+      "amenities": [
+        "WiFi",
+        "TV",
+        "Air Conditioning"
+      ],
+      "capacity": 2
+    }
+  ]
+}

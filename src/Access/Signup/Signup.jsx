@@ -3,7 +3,7 @@ import { Grid, Button, Typography, Box, InputAdornment, IconButton, Snackbar, Al
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import "./Signup.css";
-import loginImage from '../../assets/signupBgRemove.png';
+import loginImage from '../../assets/removeBg.png';
 import Input from '../../Components/Input/Input'
 import waveImg from '../../assets/wave.png';
 import { useNavigate } from "react-router-dom";
@@ -38,7 +38,7 @@ const SignupPage = () => {
         return errors;
     };
 
-    const roles = ["Admin", "User"];
+    const roles = ["Admin", "Customer"];
 
     const getCredentials = () => {
         setOpenLoader(true)
@@ -58,7 +58,8 @@ const SignupPage = () => {
             })
             .catch((err) => {
                 setOpenLoader(false);
-                console.error("Firebase Error:", err); // ✅ Check what Firebase is returning
+                // Check what Firebase is returning
+                console.error("Firebase Error:", err);
                 setError(prevError => ({
                     ...prevError,
                     general: err
@@ -105,7 +106,7 @@ const SignupPage = () => {
                 </Snackbar>
                 <Box className='welComeTo'>
                     <Typography variant="h4" fontWeight='600' sx={{ color: 'white' }} gutterBottom>
-                        WELCOME TO Jawan Pakistan Learning Management System
+                        WELCOME TO Jawan Pakistan Hotel Management System
                     </Typography>
                 </Box>
                 <Box sx={{ height: '250px', width: '350px' }}>
