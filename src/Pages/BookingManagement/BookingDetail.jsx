@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Paper, Typography, Button } from "@mui/material";
+import { Card, CardContent, CardMedia, Typography, Button, Box, Divider } from "@mui/material";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import axios from "axios";
 
@@ -8,25 +8,11 @@ const BookingDetails = () => {
     const { roomId } = useParams();
     const [room, setRoom] = useState(null);
     const [user, setUser] = useState(null);
-    const [data, setData] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        axios
-            .get("http://localhost:3000/rooms")
-            .then((res) => {
-                setData(res.data);
-            })
-            .catch((err) => {
-                console.error("Error fetching rooms:", err);
-            });
-    }, []);
-    const navigate = useNavigate()
-    useEffect(() => {
-        console.log("Received roomId:", roomId);
-
         axios.get(`http://localhost:3000/rooms/${roomId}`)
             .then((res) => {
-                console.log("Room data received:", res.data);
                 setRoom(res.data);
             })
             .catch((err) => {
@@ -51,30 +37,47 @@ const BookingDetails = () => {
     }
 
     return (
-        <Paper elevation={3} sx={{ padding: 3, width: "50vw", margin: "50px auto" }}>
-            <Typography variant="h5" sx={{ fontWeight: "bold", color: "#1976d2" }}>
-                Booking Details
-            </Typography>
-            <Typography><strong>Room Number:</strong> {room.roomNumber}</Typography>
-            <Typography><strong>Type:</strong> {room.type}</Typography>
-            <Typography><strong>Price:</strong> ${room.price} per night</Typography>
-            <Typography><strong>Status:</strong> {room.status === "Booked" ? "Booked" : "Available"}</Typography>
-            <Typography><strong>Room ID:</strong> {room.id}</Typography>
-            <hr />
-            {user && (
-                <>
-                    <Typography variant="h6">User Details</Typography>
-                    <Typography><strong>Name:</strong> {user.name}</Typography>
-                    <Typography><strong>Email:</strong> {user.email}</Typography>
-                    <Typography><strong>Phone:</strong> {user.phone}</Typography>
-                    <Typography><strong>User ID:</strong> {user.id}</Typography>
-                </>
-            )}
-            <Button onClick={() => {
-                alert('Room booked')
-                navigate('/customer/customer-details')
-            }} variant="contained" color="primary" sx={{ mt: 2 }}>Confirm Booking</Button>
-        </Paper>
+        <Box display="flex" justifyContent="center" alignItems="center">
+            <Card sx={{ Width: 800, boxShadow: 3, borderRadius: 3, p: 2 }}>
+                <CardMedia
+                    component="img"
+                    height="200"
+                    image="https://via.placeholder.com/400x200" // Replace with actual room image
+                    alt="Room Image"
+                />
+                <CardContent>
+                    <Typography variant="h5" sx={{ fontWeight: "bold", color: "#1976d2" }}>
+                        Room {room.roomNumber}
+                    </Typography>
+                    <Typography variant="body1"><strong>Type:</strong> {room.type}</Typography>
+                    <Typography variant="body1"><strong>Price:</strong> ${room.price} per night</Typography>
+                    <Typography variant="body1">
+                        <strong>Status:</strong> <span style={{ color: room.status === "Booked" ? "red" : "green", fontWeight: "bold" }}>{room.status}</span>
+                    </Typography>
+                    <Divider sx={{ my: 2 }} />
+                    {user && (
+                        <>
+                            <Typography variant="h6" sx={{ fontWeight: "bold", color: "#1976d2" }}>User Details</Typography>
+                            <Typography variant="body1"><strong>Name:</strong> {user.name}</Typography>
+                            <Typography variant="body1"><strong>Email:</strong> {user.email}</Typography>
+                            <Typography variant="body1"><strong>Phone:</strong> {user.phone}</Typography>
+                        </>
+                    )}
+                    <Button
+                        onClick={() => {
+                            alert('Room booked');
+                            navigate('/customer/customer-details');
+                        }}
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                        sx={{ mt: 2 }}
+                    >
+                        Confirm Booking
+                    </Button>
+                </CardContent>
+            </Card>
+        </Box>
     );
 };
 

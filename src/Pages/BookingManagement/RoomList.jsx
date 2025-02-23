@@ -33,13 +33,12 @@ const RoomList = () => {
                 // Update room status in database
                 axios.put(`http://localhost:3000/rooms/${room.id}`, { ...room, status: "Booked", bookedid: user.uid })
                     .then(() => {
-                        alert("Room booked successfully!");
 
                         // Update room status in UI
                         setData(prevData =>
                             prevData.map(r => r.id === room.id ? { ...r, status: "Booked" } : r)
                         );
-
+                        alert("Room booked successfully!");
                         // Navigate to booking details
                         navigate(`/rooms/room-list/${room.id}`);
                     })

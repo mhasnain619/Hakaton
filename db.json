@@ -1,42 +1,10 @@
 {
   "rooms": [
     {
-      "id": 101,
-      "roomNumber": "101",
-      "type": "Deluxe",
-      "status": "Booked",
-      "price": 120,
-      "imageSrc": "https://thumbs.dreamstime.com/b/hotel-rooms-8146308.jpg",
-      "amenities": [
-        "WiFi",
-        "TV",
-        "Mini Bar",
-        "Air Conditioning"
-      ],
-      "capacity": 2,
-      "bookedID": [],
-      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
-    },
-    {
-      "id": 102,
-      "roomNumber": "102",
-      "type": "Standard",
-      "status": "Booked",
-      "price": 80,
-      "imageSrc": "https://t4.ftcdn.net/jpg/02/95/21/53/360_F_295215313_mTUn9iAqmfVHCiEGfOuaz9tmjG0JDa1p.jpg",
-      "amenities": [
-        "WiFi",
-        "TV",
-        "Air Conditioning"
-      ],
-      "capacity": 2,
-      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
-    },
-    {
       "id": 103,
       "roomNumber": "103",
       "type": "Suite",
-      "status": "Available",
+      "status": "Booked",
       "price": 200,
       "imageSrc": "https://res.cloudinary.com/traveltripperweb/image/upload/c_limit,f_auto,h_2500,q_auto,w_2500/v1643732012/lsedhhc48clt6jqatp7x.jpg",
       "amenities": [
@@ -47,13 +15,13 @@
         "Air Conditioning"
       ],
       "capacity": 4,
-      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+      "bookedid": "VtzU6iizuPTH76Tt0qxkQEWW7og1"
     },
     {
       "id": 104,
       "roomNumber": "104",
       "type": "Single",
-      "status": "Available",
+      "status": "Booked",
       "price": 60,
       "imageSrc": "https://fruitbasket.limepack.com/blog/wp-content/uploads/2024/04/pexels-max-vakhtbovycn-6758770.jpg",
       "amenities": [
@@ -61,13 +29,13 @@
         "TV"
       ],
       "capacity": 1,
-      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+      "bookedid": "VtzU6iizuPTH76Tt0qxkQEWW7og1"
     },
     {
       "id": 105,
       "roomNumber": "105",
       "type": "Deluxe",
-      "status": "Available",
+      "status": "Booked",
       "price": 130,
       "imageSrc": "https://media.cntraveler.com/photos/65f32dfe6bb8cbba5c381160/16:9/w_2580,c_limit/Waldorf%20Astoria%20Washington%20DC_Waldorf%20Astoria%20Washington%20DC%20_%20Bi%20Level%20Loft%20Bedroom.jpg",
       "amenities": [
@@ -78,13 +46,13 @@
         "Balcony"
       ],
       "capacity": 2,
-      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+      "bookedid": "VtzU6iizuPTH76Tt0qxkQEWW7og1"
     },
     {
       "id": 106,
       "roomNumber": "106",
       "type": "Standard",
-      "status": "Available",
+      "status": "Booked",
       "price": 85,
       "imageSrc": "https://sydneyboulevard.com.au/wp-content/uploads/sites/89/2021/11/Standard-King-1.jpg",
       "amenities": [
@@ -93,7 +61,7 @@
         "Air Conditioning"
       ],
       "capacity": 2,
-      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+      "bookedid": "VtzU6iizuPTH76Tt0qxkQEWW7og1"
     },
     {
       "id": 107,

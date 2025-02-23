@@ -129,9 +129,7 @@ function ResponsiveDrawer(props) {
 
         {
             name: "Profile Management", icon: <MdFeed />, children: [
-                // { name: "Fees Structure", route: "/fees/fees-structure" },
-                // { name: "Fees Voucher", route: "/fees/fees-voucher" },
-                // { name: "Fees Submission", route: "/fees/fees-submission" },
+                { name: "Profile", route: "/profile" },
 
             ]
         },

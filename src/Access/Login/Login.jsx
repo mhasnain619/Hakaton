@@ -104,12 +104,6 @@ const LoginPage = () => {
                 backgroundPosition: 'center', backgroundRepeat: 'no-repeat',
                 height: '100vh', width: '100%',
             }} className="leftPanel">
-                <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={open} autoHideDuration={6000} onClose={handleClose}>
-                    <Alert onClose={handleClose} severity="success" variant="filled" sx={{ width: '100%' }}>
-                        Logged In Successfully!
-                    </Alert>
-                </Snackbar>
-
                 <Box className='welComeTo'>
                     <Typography variant="h4" fontWeight='600' sx={{ color: '#FDFDFD' }} gutterBottom>
                         Welcome Back

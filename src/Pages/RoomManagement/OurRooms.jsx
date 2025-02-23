@@ -21,7 +21,15 @@ const RoomList = () => {
     const handleViewDetails = (room) => {
         navigate(`/rooms/our-rooms/${room.id}`);
     };
-
+    const DeleteRoom = (room) => {
+        axios.delete(`http://localhost:3000/rooms/${room.id}`).then((res) => {
+            console.log(res.data)
+        })
+            .catch((err) => {
+                console.error("Error deleting room:", err);
+            })
+    }
+    let role = localStorage.getItem('role')
     return (
         <Container sx={{ mt: 6 }}>
             <Typography variant="h4" align="center" sx={{ mb: 3, fontWeight: "bold", color: "#1976d2" }}>
@@ -57,13 +65,21 @@ const RoomList = () => {
                                         </Typography>
                                     </Box>
                                 </CardContent>
-                                <Box sx={{ display: 'flex', justifyContent: 'start', pb: 2 }}>
+                                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                                     <Button
                                         variant="contained"
                                         onClick={() => handleViewDetails(room)}
-                                        sx={{ mt: 2 }}
+                                        sx={{}}
                                     >
                                         View Details
+                                    </Button>
+                                    <Button
+                                        disabled={role === "Customer"}
+                                        variant="contained"
+                                        onClick={() => DeleteRoom(room)}
+                                        sx={{}}
+                                    >
+                                        Delete Room
                                     </Button>
                                 </Box>
                             </Card>
