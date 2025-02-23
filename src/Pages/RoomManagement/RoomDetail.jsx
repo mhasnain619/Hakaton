@@ -43,9 +43,7 @@ const RoomDetail = () => {
                         <Chip key={index} label={amenity} sx={{ m: 0.5, backgroundColor: "#e3f2fd" }} />
                     ))}
                 </Box>
-                <Button variant="contained" color="primary" fullWidth sx={{ mt: 1 }}>
-                    Book Now
-                </Button>
+
             </CardContent>
         </Card>
     );

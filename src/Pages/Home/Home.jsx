@@ -23,10 +23,10 @@ const Home = () => {
 
                     {/* Buttons */}
                     <Box mt={3} display="flex" gap={2}>
-                        <Button onClick={() => navigate('/signup')} variant="contained" color="primary" size="large" sx={{ borderRadius: 8, px: 4, py: 1.5 }}>
+                        <Button onClick={() => navigate('/signup')} variant="contained" color="primary" size="large" sx={{ px: 5, py: 1 }}>
                             Sign Up
                         </Button>
-                        <Button onClick={() => navigate('/login')} variant="contained" color="primary" size="large" sx={{ borderRadius: 8, px: 4, py: 1.5 }}>
+                        <Button onClick={() => navigate('/login')} variant="contained" color="primary" size="large" sx={{ px: 5, py: 1 }}>
                             Login
                         </Button>
 

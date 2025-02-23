@@ -4,7 +4,7 @@
       "id": 103,
       "roomNumber": "103",
       "type": "Suite",
-      "status": "Booked",
+      "status": "Available",
       "price": 200,
       "imageSrc": "https://res.cloudinary.com/traveltripperweb/image/upload/c_limit,f_auto,h_2500,q_auto,w_2500/v1643732012/lsedhhc48clt6jqatp7x.jpg",
       "amenities": [
@@ -21,7 +21,7 @@
       "id": 104,
       "roomNumber": "104",
       "type": "Single",
-      "status": "Booked",
+      "status": "Available",
       "price": 60,
       "imageSrc": "https://fruitbasket.limepack.com/blog/wp-content/uploads/2024/04/pexels-max-vakhtbovycn-6758770.jpg",
       "amenities": [
@@ -35,7 +35,7 @@
       "id": 105,
       "roomNumber": "105",
       "type": "Deluxe",
-      "status": "Booked",
+      "status": "Available",
       "price": 130,
       "imageSrc": "https://media.cntraveler.com/photos/65f32dfe6bb8cbba5c381160/16:9/w_2580,c_limit/Waldorf%20Astoria%20Washington%20DC_Waldorf%20Astoria%20Washington%20DC%20_%20Bi%20Level%20Loft%20Bedroom.jpg",
       "amenities": [
@@ -52,7 +52,7 @@
       "id": 106,
       "roomNumber": "106",
       "type": "Standard",
-      "status": "Booked",
+      "status": "Available",
       "price": 85,
       "imageSrc": "https://sydneyboulevard.com.au/wp-content/uploads/sites/89/2021/11/Standard-King-1.jpg",
       "amenities": [
@@ -67,7 +67,7 @@
       "id": 107,
       "roomNumber": "107",
       "type": "Suite",
-      "status": "Booked",
+      "status": "Available",
       "price": 210,
       "imageSrc": "https://www.decorilla.com/online-decorating/wp-content/uploads/2019/01/Luxury-boutique-interior-design-before-and-after-by-Decorilla-1.jpg",
       "amenities": [
@@ -84,7 +84,7 @@
       "id": 108,
       "roomNumber": "108",
       "type": "Double",
-      "status": "Booked",
+      "status": "Available",
       "price": 65,
       "imageSrc": "https://media.nomadicmatt.com/2023/cheaphotelrooms.jpg",
       "amenities": [
@@ -122,7 +122,8 @@
         "TV",
         "Air Conditioning"
       ],
-      "capacity": 2
+      "capacity": 2,
+      "bookedid": "Xo2ZKJkjEnc5bJ4d18UkudIZ0SA3"
     },
     {
       "id": 111,
@@ -188,7 +189,7 @@
       "id": "1141",
       "capacity": "2",
       "roomNumber": "232323",
-      "status": "Booked",
+      "status": "Available",
       "type": "laxury",
       "price": "50",
       "bookedid": "VtzU6iizuPTH76Tt0qxkQEWW7og1"

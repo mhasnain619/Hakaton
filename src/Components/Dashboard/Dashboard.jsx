@@ -27,7 +27,8 @@ import { MdOutlineSubject } from "react-icons/md";
 import { FaBook } from "react-icons/fa";
 import { BiSolidSchool } from "react-icons/bi";
 import { SiGoogleclassroom } from "react-icons/si";
-
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import PersonIcon from '@mui/icons-material/Person';
 // import './Layout.css'
 const drawerWidth = 250;
 
@@ -69,7 +70,7 @@ function ResponsiveDrawer(props) {
 
     const pages = [
         {
-            name: "Customer Management", icon: <PiStudentBold />, children: [
+            name: "Customer Management", icon: <SupportAgentIcon />, children: [
                 { name: "Customer Details", route: "/customer/customer-details", type: "customer" },
             ]
         },
@@ -109,7 +110,7 @@ function ResponsiveDrawer(props) {
         },
 
         {
-            name: "Profile Management", icon: <MdFeed />, children: [
+            name: "Profile Management", icon: <PersonIcon />, children: [
                 { name: "Profile", route: "/profile" },
 
             ]
@@ -273,11 +274,11 @@ function ResponsiveDrawer(props) {
 
                     <Container maxWidth="lg" sx={{}}>
 
-                        <Typography variant="h4" fontWeight="bold" gutterBottom>
+                        <Typography sx={{ fontSize: '30px' }} variant="h4" fontWeight="bold" gutterBottom>
                             Hotel Management System
                         </Typography>
                         <Typography variant="body1" sx={{ mb: 2 }}>
-                            Welcome to the **Hotel Management System**, a powerful and user-friendly platform designed to streamline hotel
+                            Welcome to the <span style={{ color: '#2845ad', fontWeight: "bold" }}>Hotel Management System</span>, a powerful and user-friendly platform designed to streamline hotel
                             operations, enhance customer experiences, and manage resources efficiently.
                         </Typography>
 
