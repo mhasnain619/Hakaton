@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card, CardContent, CardMedia, Typography, Box, Container, Grid, Button } from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import './OurRooms.css'
 
 const RoomList = () => {
     const [data, setData] = useState([]);
@@ -69,7 +70,7 @@ const RoomList = () => {
                                     <Button
                                         variant="contained"
                                         onClick={() => handleViewDetails(room)}
-                                        sx={{}}
+                                        sx={{ textTransform: 'none' }}
                                     >
                                         View Details
                                     </Button>
@@ -77,7 +78,7 @@ const RoomList = () => {
                                         disabled={role === "Customer"}
                                         variant="contained"
                                         onClick={() => DeleteRoom(room)}
-                                        sx={{}}
+                                        sx={{ textTransform: 'none' }}
                                     >
                                         Delete Room
                                     </Button>

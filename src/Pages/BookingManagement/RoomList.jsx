@@ -27,9 +27,6 @@ const RoomList = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 console.log(user);
-
-
-
                 // Update room status in database
                 axios.put(`http://localhost:3000/rooms/${room.id}`, { ...room, status: "Booked", bookedid: user.uid })
                     .then(() => {
@@ -92,14 +89,14 @@ const RoomList = () => {
                                         disabled={room.status === "Booked"}
                                         variant="contained"
                                         onClick={() => handleBooking(room)}
-                                        sx={{ mt: 2 }}
+                                        sx={{ mt: 2, textTransform: 'none' }}
                                     >
                                         {room.status === "Booked" ? "Booked" : "Book Now"}
                                     </Button>
                                     <Button
                                         disabled={role === "Customer"}
                                         variant="contained"
-                                        sx={{ mt: 2 }}
+                                        sx={{ mt: 2, textTransform: 'none' }}
                                     >
                                         Update Room
                                     </Button>

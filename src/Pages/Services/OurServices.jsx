@@ -2,24 +2,21 @@ import { Button, Paper, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 import Input from "../../Components/Input/Input";
 
-const AddRoom = () => {
+const AddServices = () => {
     const navigate = useNavigate();
 
-    const [userDetails, setUserDetails] = useState({
-        capacity: "",
-        roomNumber: "",
-        status: "",
-        type: "",
-        price: "",
+    const [services, setServices] = useState({
+        name: "",
+        description: "",
+        price: ""
     });
     const [data, setData] = useState([]);
 
     useEffect(() => {
         axios
-            .get("http://localhost:3000/rooms")
+            .get("http://localhost:3000/services")
             .then((res) => {
                 setData(res.data);
             })
@@ -27,80 +24,57 @@ const AddRoom = () => {
                 console.error("Error fetching rooms:", err);
             });
     }, []);
-    let id = data.map((user) => {
-        return user.id
-    })
-    console.log(id);
 
 
     const CreateUser = () => {
-        const newRoom = {
-            id: id + 1,
-            ...userDetails,
-        };
         axios
-            .post("http://localhost:3000/rooms", newRoom)
+            .post("http://localhost:3000/services", services)
             .then((res) => {
-                console.log("Room create successfully..");
-                navigate("/rooms/our-rooms");
+                console.log("services create successfully..");
+                navigate("/services/services-list");
             })
             .catch((err) => {
                 console.log(err);
             });
     };
-    console.log(userDetails);
+    console.log(services);
 
     return (
         <Paper elevation={24} sx={{ display: 'flex', flexDirection: 'column', gap: '10px', width: "40vw", marginTop: '55px', marginX: "auto", padding: 5 }}>
             <Typography variant="h5" sx={{ textAlign: "center" }}>
-                Create Room
+                Add Services
             </Typography>
 
             <Input
                 onChangeEvent={(e) => {
-                    setUserDetails({ ...userDetails, roomNumber: e.target.value });
+                    setServices({ ...services, name: e.target.value });
                 }}
-                label="Room Number"
+                label="Service Name"
                 fullWidth
             />
             <Input
                 onChangeEvent={(e) => {
-                    setUserDetails({ ...userDetails, capacity: e.target.value });
+                    setServices({ ...services, description: e.target.value });
                 }}
-                label="Enter capacity"
+                label="Service description"
                 fullWidth
             />
 
 
             <Input
                 onChangeEvent={(e) => {
-                    setUserDetails({ ...userDetails, type: e.target.value });
+                    setServices({ ...services, price: e.target.value });
                 }}
-                label="Enter type"
+                label="Service price"
                 fullWidth
             />
-            <Input
-                onChangeEvent={(e) => {
-                    setUserDetails({ ...userDetails, status: e.target.value });
-                }}
-                label="Enter status"
-                fullWidth
-            />
-            <Input
-                onChangeEvent={(e) => {
-                    setUserDetails({ ...userDetails, price: e.target.value });
-                }}
-                label="Enter price"
-                fullWidth
-            />
-
             <Button
                 onClick={CreateUser}
                 fullWidth
                 variant="contained"
                 sx={{ textTransform: 'none' }}
             >
-                Create Room
+                Add Services
             </Button>
             <Button onClick={() => navigate('/rooms/room-list')}
                 fullWidth sx={{ textTransform: 'none' }} variant="contained">
@@ -110,4 +84,4 @@ const AddRoom = () => {
     );
 };
 
-export default AddRoom;
+export default AddServices;

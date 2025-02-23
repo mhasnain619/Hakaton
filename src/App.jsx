@@ -32,10 +32,13 @@ import RoomList from './Pages/BookingManagement/RoomList';
 import AddRoom from './Pages/BookingManagement/AddRoom';
 import BookingDetails from './Pages/BookingManagement/BookingDetail';
 import CustomerDetails from './Pages/CustomerManagement/CsutomerDetails';
-import OurServices from './Pages/Survices/OurServices';
 import BookingPayment from './Pages/PaymentManagement/BookingPayments';
 import RoomDetail from './Pages/RoomManagement/RoomDetail';
 import OurRooms from './Pages/RoomManagement/OurRooms';
+import Services from './Pages/Services/OurServices';
+import AddServices from './Pages/Services/OurServices';
+import ServicesList from './Pages/Services/ServicesList';
+import InventoryManagement from './Pages/InventoryManagement/Inventory';
 
 // Material UI Theme
 const theme = createTheme({
@@ -67,10 +70,8 @@ function App() {
             <Route path="profile" element={<UserProfile />} />
 
 
-            {/* student Routes */}
-            {/* <Route path="student/student-registration" element={<StudentRegistrationForm />} />
-            <Route path="student/student-list" element={<StudentList />} />
-            <Route path="student/student-list/:id" element={<UpdateStudent />} /> */}
+            {/* Customer Routes */}
+
             <Route path="customer/customer-details" element={<CustomerDetails />} />
 
             {/* Rooms Routes */}
@@ -83,35 +84,19 @@ function App() {
             <Route path="rooms/room-list/:roomId" element={<BookingDetails />} />
 
 
-            {/* Subjects Routes */}
-            {/* <Route path="subject/add-subject" element={<SubjectRegistrationForm />} />
-            <Route path="subject/subject-list" element={<SubjectList />} />
-            <Route path="subject/subject-list/:id" element={<UpdateSubject />} /> */}
+            {/* Booking Payments Routes */}
+
             <Route path="Booking/booking-payments" element={<BookingPayment />} />
 
-            {/* Syllabus Routes */}
-            {/* <Route path="syllabus/add-syllabus" element={<SyllabusForm />} />
-            <Route path="syllabus/syllabus-list" element={<SyllabusList />} />
-            <Route path="syllabus/syllabus-list/:id" element={<UpdateSyllabus />} /> */}
-            <Route path="services/services-list" element={<OurServices />} />
+            {/* services Routes */}
 
-            {/* School Routes */}
-            {/* <Route path="school/school-student-registration" element={< SchoolStudentRegistration />} /> */}
-            {/* <Route path="school/school-teacher-registration" element={< SchoolTeacherRegistration />} /> */}
+            <Route path="services/add-services" element={<AddServices />} />
+            <Route path="services/services-list" element={<ServicesList />} />
 
-            {/* Class Routes */}
-            <Route path="class/class-form" element={<ClassForm />} />
-            <Route path="class/class-list" element={<ClassList />} />
-            <Route path='class/class-list/:id' element={<UpdateClass />} />
-
-            {/*Routes Admission Form  */}
-            {/* <Route path="admission/admission-form" element={<AdmissionForm />} /> */}
+            {/* Inventory Management Routes*/}
+            <Route path="inventory" element={<InventoryManagement />} />
 
 
-            {/* Routes Fees */}
-            <Route path="fees/fees-structure" element={<FeesStructureCard />} />
-            <Route path="fees/fees-voucher" element={<FeeVoucher />} />
-            <Route path="fees/fees-submission" element={<FeeSubmission />} />
 
             {/* Routes for Exams */}
             {/* <Route path="exam/exam-schedule" element={<ExamScheduleCard />} /> */}

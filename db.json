@@ -67,7 +67,7 @@
       "id": 107,
       "roomNumber": "107",
       "type": "Suite",
-      "status": "Available",
+      "status": "Booked",
       "price": 210,
       "imageSrc": "https://www.decorilla.com/online-decorating/wp-content/uploads/2019/01/Luxury-boutique-interior-design-before-and-after-by-Decorilla-1.jpg",
       "amenities": [
@@ -78,13 +78,13 @@
         "Air Conditioning"
       ],
       "capacity": 4,
-      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+      "bookedid": "VtzU6iizuPTH76Tt0qxkQEWW7og1"
     },
     {
       "id": 108,
       "roomNumber": "108",
       "type": "Double",
-      "status": "Available",
+      "status": "Booked",
       "price": 65,
       "imageSrc": "https://media.nomadicmatt.com/2023/cheaphotelrooms.jpg",
       "amenities": [
@@ -92,7 +92,7 @@
         "TV"
       ],
       "capacity": 1,
-      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+      "bookedid": "VtzU6iizuPTH76Tt0qxkQEWW7og1"
     },
     {
       "id": 109,
@@ -108,8 +108,7 @@
         "Air Conditioning",
         "Balcony"
       ],
-      "capacity": 2,
-      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+      "capacity": 2
     },
     {
       "id": 110,
@@ -123,8 +122,7 @@
         "TV",
         "Air Conditioning"
       ],
-      "capacity": 2,
-      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+      "capacity": 2
     },
     {
       "id": 111,
@@ -140,8 +138,7 @@
         "Jacuzzi",
         "Air Conditioning"
       ],
-      "capacity": 4,
-      "bookedid": "OoTWcSkBxAVd0LMDDgGWXVb2l072"
+      "capacity": 4
     },
     {
       "id": 112,
@@ -170,8 +167,7 @@
         "Air Conditioning",
         "Balcony"
       ],
-      "capacity": 2,
-      "bookedid": "A4qSiy6eTdPyB2xldIfI1iLN0Fu1"
+      "capacity": 2
     },
     {
       "id": 114,
@@ -185,7 +181,68 @@
         "TV",
         "Air Conditioning"
       ],
-      "capacity": 2
+      "capacity": 2,
+      "bookedId": ""
+    },
+    {
+      "id": "1141",
+      "capacity": "2",
+      "roomNumber": "232323",
+      "status": "Booked",
+      "type": "laxury",
+      "price": "50",
+      "bookedid": "VtzU6iizuPTH76Tt0qxkQEWW7og1"
     }
-  ]
+  ],
+  "services": [
+    {
+      "id": 1,
+      "name": "Room Cleaning",
+      "description": "Daily room cleaning service",
+      "price": 10
+    },
+    {
+      "id": 2,
+      "name": "Food Delivery",
+      "description": "Order food from our restaurant",
+      "price": 20
+    },
+    {
+      "id": 3,
+      "name": "Laundry",
+      "description": "Wash and iron your clothes",
+      "price": 15
+    },
+    {
+      "id": 3,
+      "name": "Laundry",
+      "description": "Wash and iron your clothes",
+      "price": 15
+    },
+    {
+      "id": 3,
+      "name": "Laundry",
+      "description": "Wash and iron your clothes",
+      "price": 15
+    },
+    {
+      "id": 3,
+      "name": "Laundry",
+      "description": "Wash and iron your clothes",
+      "price": 15
+    },
+    {
+      "id": 4,
+      "name": "Maintenance",
+      "description": "Report a maintenance issue",
+      "price": 0
+    },
+    {
+      "name": "Laundary",
+      "description": "mera kapray dhona ha",
+      "price": "10",
+      "id": 6
+    }
+  ],
+  "inventory": []
 }

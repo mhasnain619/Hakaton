@@ -20,7 +20,7 @@ import jawan from '../../assets/jawan.png';
 import { FaUser } from "react-icons/fa";
 import { MdContactPage, MdExpandLess, MdExpandMore, MdFeed, MdOutlineAdminPanelSettings } from "react-icons/md";
 import './Dashboard.css'
-import { Avatar, Button, Collapse, Menu, MenuItem, Tooltip } from '@mui/material';
+import { Avatar, Button, Collapse, Container, Menu, MenuItem, Paper, Tooltip } from '@mui/material';
 import { PiExamFill, PiStudentBold } from "react-icons/pi";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { MdOutlineSubject } from "react-icons/md";
@@ -66,64 +66,45 @@ function ResponsiveDrawer(props) {
         navigate('/login')
     }
     let role = localStorage.getItem('role')
-    console.log(role);
 
     const pages = [
-
-        // {
-        //     name: "Customer Management", icon: <MdOutlineAdminPanelSettings />, children: [
-        //         { name: "Admission Form", route: "/admission/admission-form" },
-
-        //     ]
-        // },
-
         {
             name: "Customer Management", icon: <PiStudentBold />, children: [
-                // { name: "Student Registration", route: "/student/student-registration" },
-                // { name: "Student List", route: "/student/student-list" },
                 { name: "Customer Details", route: "/customer/customer-details", type: "customer" },
             ]
         },
         {
             name: "Room Management", icon: <FaChalkboardTeacher />, children: [
-                // { name: "Teacher Registration", route: "/teacher/teacher-registration" },
-                // { name: "Teacher List", route: "/teacher/teacher-list" },
                 { name: "Our Rooms", route: "/rooms/our-rooms", type: "customer" },
             ]
         },
         {
             name: "Booking Management", icon: <FaChalkboardTeacher />, children: [
-                // { name: "Teacher Registration", route: "/teacher/teacher-registration" },
-                // { name: "Teacher List", route: "/teacher/teacher-list" },
                 { name: "Add Room", route: "/rooms/add-room", type: "admin" },
                 { name: "Book Room", route: "/rooms/room-list", type: "customer" },
+            ]
+        },
+        {
+            name: "Payment Management", icon: <MdOutlineSubject />, children: [
+                { name: "Booking Payments", route: "/Booking/booking-payments", type: "customer" }
             ]
         },
 
         {
             name: "Service Management ", icon: <FaBook />, children: [
-                // { name: "Add Syllabus", route: "/syllabus/add-syllabus" },
-                // { name: "Syllabus List", route: "/syllabus/syllabus-list" }
-                { name: "Services", route: "/services/services-list", type: "customer" }
+                { name: "Add Services", route: "/services/add-services", type: "admin" },
+                { name: "Services List", route: "/services/services-list", type: "customer" }
             ]
         },
-        {
-            name: "Payment Management", icon: <MdOutlineSubject />, children: [
-                // { name: "Add Subject", route: "/subject/add-subject" },
-                // { name: "Subjects List", route: "/subject/subject-list" }
-                { name: "Booking Payments", route: "/Booking/booking-payments", type: "customer" }
-            ]
-        },
+
         {
             name: "Inventory Management", icon: <BiSolidSchool />, children: [
-                // { name: "Student Registration", route: "/school/school-student-registration" },
-                // { name: "Teacher Registration", route: "/school/school-teacher-registration" }
+                { name: "Inventory", route: "/inventory", type: "customer" },
             ]
         },
         {
             name: "Report Generation ", icon: <SiGoogleclassroom />, children: [
-                // { name: "Class Form", route: "/class/class-form" },
-                // { name: "Class List", route: "/class/class-list" }
+
             ]
         },
 
@@ -133,13 +114,7 @@ function ResponsiveDrawer(props) {
 
             ]
         },
-        // {
-        //     name: "Exam", icon: <PiExamFill />, children: [
-        //         { name: "Exam Schedule", route: "/exam/exam-schedule" },
-        //         { name: "Exam Result", route: "/exam/exam-result" },
-        //     ]
-        // },
-        // { name: "Contact Us", icon: <MdContactPage />, route: "/contact" },
+
     ];
 
     const handleDrawerToggle = () => {
@@ -296,7 +271,83 @@ function ResponsiveDrawer(props) {
 
                 {document.location.pathname === '/' && <Box sx={{ display: 'flex', flexDirection: 'column', gap: '5px', py: 6 }}>
 
+                    <Container maxWidth="lg" sx={{}}>
 
+                        <Typography variant="h4" fontWeight="bold" gutterBottom>
+                            Hotel Management System
+                        </Typography>
+                        <Typography variant="body1" sx={{ mb: 2 }}>
+                            Welcome to the **Hotel Management System**, a powerful and user-friendly platform designed to streamline hotel
+                            operations, enhance customer experiences, and manage resources efficiently.
+                        </Typography>
+
+                        <Box textAlign="left">
+                            <Typography variant="h5" fontWeight="bold" sx={{ mt: 2 }}>
+                                🌟 Key Features & Functionalities:
+                            </Typography>
+
+                            <Typography variant="h6" fontWeight="bold" sx={{ mt: 2 }}>
+                                🏠 Room Booking & Management
+                            </Typography>
+                            <Typography variant="body2">
+                                - View available rooms with real-time status updates.<br />
+                                - Book, modify, or cancel reservations easily.<br />
+                                - Display detailed room information with images and amenities.
+                            </Typography>
+
+                            <Typography variant="h6" fontWeight="bold" sx={{ mt: 2 }}>
+                                🛍️ Inventory Management
+                            </Typography>
+                            <Typography variant="body2">
+                                - Track essential hotel supplies like toiletries and food items.<br />
+                                - Add, update, and remove inventory items.<br />
+                                - Prevent shortages and ensure smooth operations.
+                            </Typography>
+
+                            <Typography variant="h6" fontWeight="bold" sx={{ mt: 2 }}>
+                                💰 Payments & Billing
+                            </Typography>
+                            <Typography variant="body2">
+                                - Securely process customer payments.<br />
+                                - Generate invoices and track outstanding dues.<br />
+                                - Integrated with multiple payment options.
+                            </Typography>
+
+                            <Typography variant="h6" fontWeight="bold" sx={{ mt: 2 }}>
+                                📊 Dashboard & Analytics
+                            </Typography>
+                            <Typography variant="body2">
+                                - View hotel performance, revenue, and occupancy rates.<br />
+                                - Monitor booking trends and customer preferences.<br />
+                                - Generate insightful reports for better decision-making.
+                            </Typography>
+
+                            <Typography variant="h6" fontWeight="bold" sx={{ mt: 2 }}>
+                                🔐 User Authentication & Security
+                            </Typography>
+                            <Typography variant="body2">
+                                - Secure login system using Firebase authentication.<br />
+                                - Admins can manage users and assign roles.<br />
+                                - Ensures customer data privacy and protection.
+                            </Typography>
+
+                            <Typography variant="h5" fontWeight="bold" sx={{ mt: 2 }}>
+                                ✅ Why Choose This System?
+                            </Typography>
+                            <Typography variant="body2">
+                                ✔ User-Friendly Interface – Easy navigation and intuitive design.<br />
+                                ✔ Real-Time Updates – Live tracking of room status and inventory.<br />
+                                ✔ Secure Data Management – Customer and payment details are protected.<br />
+                                ✔ Scalable – Suitable for small hotels to large resorts.<br />
+                                ✔ Seamless Integration – Works with Firebase, JSON Server, and payment gateways.
+                            </Typography>
+
+                            <Typography variant="h6" fontWeight="bold" sx={{ mt: 2 }}>
+                                🚀 Start managing your hotel effortlessly today!
+                            </Typography>
+                        </Box>
+
+                    </Container>
                 </Box>}
 
                 {/* Render nested routes (for dynamic content) */}

@@ -12,12 +12,8 @@ const BookingDetails = () => {
 
     useEffect(() => {
         axios.get(`http://localhost:3000/rooms/${roomId}`)
-            .then((res) => {
-                setRoom(res.data);
-            })
-            .catch((err) => {
-                console.error("Error fetching room:", err.response ? err.response.data : err.message);
-            });
+            .then((res) => setRoom(res.data))
+            .catch((err) => console.error("Error fetching room:", err.response?.data || err.message));
 
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
@@ -33,17 +29,18 @@ const BookingDetails = () => {
     }, [roomId]);
 
     if (!room) {
-        return <Typography>Loading booking details...</Typography>;
+        return <Typography align="center" sx={{ mt: 4 }}>Loading booking details...</Typography>;
     }
 
     return (
-        <Box display="flex" justifyContent="center" alignItems="center">
-            <Card sx={{ Width: 800, boxShadow: 3, borderRadius: 3, p: 2 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: "100vh" }}>
+            <Card sx={{ width: "600px", boxShadow: 5, borderRadius: 3, p: 2 }}>
                 <CardMedia
                     component="img"
-                    height="200"
-                    image="https://via.placeholder.com/400x200" // Replace with actual room image
+                    height="150"
+                    image={room.imageSrc || "https://via.placeholder.com/400x200"}
                     alt="Room Image"
+                    sx={{ borderRadius: "10px", objectFit: "cover" }}
                 />
                 <CardContent>
                     <Typography variant="h5" sx={{ fontWeight: "bold", color: "#1976d2" }}>
@@ -52,12 +49,15 @@ const BookingDetails = () => {
                     <Typography variant="body1"><strong>Type:</strong> {room.type}</Typography>
                     <Typography variant="body1"><strong>Price:</strong> ${room.price} per night</Typography>
                     <Typography variant="body1">
-                        <strong>Status:</strong> <span style={{ color: room.status === "Booked" ? "red" : "green", fontWeight: "bold" }}>{room.status}</span>
+                        <strong>Status:</strong>
+                        <span style={{ color: room.status === "Booked" ? "red" : "green", fontWeight: "bold" }}>
+                            {room.status}
+                        </span>
                     </Typography>
                     <Divider sx={{ my: 2 }} />
                     {user && (
                         <>
-                            <Typography variant="h6" sx={{ fontWeight: "bold", color: "#1976d2" }}>User Details</Typography>
+                            <Typography variant="h6" sx={{ fontWeight: "bold", color: "#1976d2" }}>Customer Details</Typography>
                             <Typography variant="body1"><strong>Name:</strong> {user.name}</Typography>
                             <Typography variant="body1"><strong>Email:</strong> {user.email}</Typography>
                             <Typography variant="body1"><strong>Phone:</strong> {user.phone}</Typography>
@@ -71,7 +71,7 @@ const BookingDetails = () => {
                         variant="contained"
                         color="primary"
                         fullWidth
-                        sx={{ mt: 2 }}
+                        sx={{ mt: 2, borderRadius: 2 }}
                     >
                         Confirm Booking
                     </Button>
